@@ -16,4 +16,4 @@
 
 ## History
 
-<!-- Keep this updated. Earliest to latest -->
+- **2026-07-13**: Initialized Next.js project with Tailwind CSS, TypeScript, and ESLint. Cleaned up boilerplate files and created the initial commit (`chore: initial next.js and tailwind setup`). Added the remote origin repository.
