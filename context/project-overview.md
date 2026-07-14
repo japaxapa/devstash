@@ -8,16 +8,16 @@
 
 Developers scatter their day-to-day resources across too many tools:
 
-| Resource | Typical (wrong) home |
-|---|---|
-| Code snippets | VS Code / Notion |
-| AI prompts | Chat history |
-| Context files | Buried in random project folders |
-| Useful links | Browser bookmarks |
-| Docs | Random folders |
-| Commands | `.txt` files |
-| Project templates | GitHub Gists |
-| Terminal commands | Shell history |
+| Resource          | Typical (wrong) home             |
+| ----------------- | -------------------------------- |
+| Code snippets     | VS Code / Notion                 |
+| AI prompts        | Chat history                     |
+| Context files     | Buried in random project folders |
+| Useful links      | Browser bookmarks                |
+| Docs              | Random folders                   |
+| Commands          | `.txt` files                     |
+| Project templates | GitHub Gists                     |
+| Terminal commands | Shell history                    |
 
 The result is constant context-switching, lost knowledge, and inconsistent workflows. **DevStash** solves this by giving developers one place to save, organize, search, and (optionally) AI-enhance everything they need.
 
@@ -35,42 +35,48 @@ The result is constant context-switching, lost knowledge, and inconsistent workf
 ## 3. Core Features
 
 ### A. Items & Item Types
+
 Items are the atomic unit of DevStash. Every item has a **type**, which determines how it's stored and rendered.
 
 **System types** (fixed, cannot be edited/deleted by users):
 
-| Type | Content kind |
-|---|---|
-| Snippet | text |
-| Prompt | text |
-| Note | text |
-| Command | text |
-| Link | url |
-| File 🔒 Pro | file |
-| Image 🔒 Pro | file |
+| Type         | Content kind |
+| ------------ | ------------ |
+| Snippet      | text         |
+| Prompt       | text         |
+| Note         | text         |
+| Command      | text         |
+| Link         | url          |
+| File 🔒 Pro  | file         |
+| Image 🔒 Pro | file         |
 
 - Users can later create **custom types** (Pro, post-MVP).
 - Items are designed to be created/viewed quickly inside a **drawer** (no full-page navigation required).
 - Route convention: `/items/[type]` (e.g. `/items/snippets`).
 
 ### B. Collections
-- A collection groups items of *any* type (e.g. "React Patterns" can hold snippets **and** notes).
+
+- A collection groups items of _any_ type (e.g. "React Patterns" can hold snippets **and** notes).
 - **Many-to-many**: an item can belong to multiple collections (a React snippet could live in both "React Patterns" and "Interview Prep").
-- Examples: *React Patterns*, *Context Files*, *Python Snippets*.
+- Examples: _React Patterns_, _Context Files_, _Python Snippets_.
 
 ### C. Search
+
 Full-text search across:
+
 - Content
 - Tags
 - Titles
 - Types
 
 ### D. Authentication
+
 - Email/password
 - GitHub OAuth
 - (via NextAuth v5)
 
 ### E. Quality-of-life Features
+
 - Favorite collections & items
 - Pin items to top
 - "Recently used" list
@@ -83,6 +89,7 @@ Full-text search across:
 - View which collections a given item belongs to
 
 ### F. AI Features 🔒 Pro only
+
 - AI auto-tag suggestions
 - AI summaries
 - "Explain this code"
@@ -388,18 +395,18 @@ flowchart LR
 
 ## 6. Tech Stack
 
-| Layer | Choice |
-|---|---|
-| Framework | Next.js 16 / React 19, SSR pages with dynamic components |
-| Backend | Next.js API routes (items, file uploads, AI calls) |
-| Language | TypeScript |
-| Database | Neon (PostgreSQL) |
-| ORM | Prisma 7 (latest — check current docs) |
-| Cache | Redis (maybe, TBD) |
-| File storage | Cloudflare R2 |
-| Auth | NextAuth v5 (email/password + GitHub OAuth) |
-| AI | OpenAI `gpt-5-nano` |
-| Styling | Tailwind CSS v4 + shadcn/ui |
+| Layer        | Choice                                                   |
+| ------------ | -------------------------------------------------------- |
+| Framework    | Next.js 16 / React 19, SSR pages with dynamic components |
+| Backend      | Next.js API routes (items, file uploads, AI calls)       |
+| Language     | TypeScript                                               |
+| Database     | Neon (PostgreSQL)                                        |
+| ORM          | Prisma 7 (latest — check current docs)                   |
+| Cache        | Redis (maybe, TBD)                                       |
+| File storage | Cloudflare R2                                            |
+| Auth         | NextAuth v5 (email/password + GitHub OAuth)              |
+| AI           | OpenAI `gpt-5-nano`                                      |
+| Styling      | Tailwind CSS v4 + shadcn/ui                              |
 
 **Repo structure:** single codebase / single repo (frontend + API together) to minimize overhead.
 
@@ -409,19 +416,19 @@ flowchart LR
 
 ## 7. Monetization — Freemium
 
-| | **Free** | **Pro** — $8/mo or $72/yr |
-|---|---|---|
-| Items | 50 total | Unlimited |
-| Collections | 3 | Unlimited |
-| System types | All except File/Image | All |
-| File & image uploads | ❌ | ✅ |
-| Custom types | ❌ | ✅ (later) |
-| Search | Basic | Basic |
-| AI auto-tagging | ❌ | ✅ |
-| AI code explanation | ❌ | ✅ |
-| AI prompt optimizer | ❌ | ✅ |
-| Export (JSON/ZIP) | ❌ | ✅ |
-| Support | Standard | Priority |
+|                      | **Free**              | **Pro** — $8/mo or $72/yr |
+| -------------------- | --------------------- | ------------------------- |
+| Items                | 50 total              | Unlimited                 |
+| Collections          | 3                     | Unlimited                 |
+| System types         | All except File/Image | All                       |
+| File & image uploads | ❌                    | ✅                        |
+| Custom types         | ❌                    | ✅ (later)                |
+| Search               | Basic                 | Basic                     |
+| AI auto-tagging      | ❌                    | ✅                        |
+| AI code explanation  | ❌                    | ✅                        |
+| AI prompt optimizer  | ❌                    | ✅                        |
+| Export (JSON/ZIP)    | ❌                    | ✅                        |
+| Support              | Standard              | Priority                  |
 
 **Dev note:** build the Pro-gating foundation now (`isPro`, Stripe fields, feature flags), but during active development **all users get full access** to every feature regardless of plan.
 
@@ -430,37 +437,48 @@ flowchart LR
 ## 8. UI / UX
 
 ### General
+
 - Modern, minimal, developer-focused — think **Notion**, **Linear**, **Raycast**.
 - Dark mode by default; light mode optional.
 - Clean typography, generous whitespace, subtle borders/shadows.
 - Syntax highlighting on all code blocks.
 
 ### Layout
+
 - **Sidebar** (collapsible): item types (Snippets, Commands, etc.) with direct links, plus latest collections.
 - **Main area**: grid of collection cards, color-coded by the item type that dominates that collection (background color). Items render inside their collection card with a border color matching their own type.
 - **Item detail**: opens in a quick-access **drawer**, not a full page.
 
 ### Responsive
+
 - Desktop-first, mobile-usable.
 - Sidebar collapses into a drawer on mobile.
 
 ### Micro-interactions
+
 - Smooth transitions
 - Hover states on cards
 - Toast notifications for actions
 - Loading skeletons
 
+### Screenshots
+
+Refer to the screenshots below as a base for the dashboard UI. It does not have to be exact. Use it as a reference:
+
+- @context/screenshots/dashboard-ui-main.png
+- @context/screenshots/dashboard-ui-drawer.png
+
 ### Type Colors & Icons (Lucide icon names)
 
-| Type | Color | Hex | Icon |
-|---|---|---|---|
-| Snippet | 🔵 Blue | `#3b82f6` | `Code` |
-| Prompt | 🟣 Purple | `#8b5cf6` | `Sparkles` |
-| Command | 🟠 Orange | `#f97316` | `Terminal` |
-| Note | 🟡 Yellow | `#fde047` | `StickyNote` |
-| File | ⚪ Gray | `#6b7280` | `File` |
-| Image | 🌸 Pink | `#ec4899` | `Image` |
-| Link | 🟢 Emerald | `#10b981` | `Link` |
+| Type    | Color      | Hex       | Icon         |
+| ------- | ---------- | --------- | ------------ |
+| Snippet | 🔵 Blue    | `#3b82f6` | `Code`       |
+| Prompt  | 🟣 Purple  | `#8b5cf6` | `Sparkles`   |
+| Command | 🟠 Orange  | `#f97316` | `Terminal`   |
+| Note    | 🟡 Yellow  | `#fde047` | `StickyNote` |
+| File    | ⚪ Gray    | `#6b7280` | `File`       |
+| Image   | 🌸 Pink    | `#ec4899` | `Image`      |
+| Link    | 🟢 Emerald | `#10b981` | `Link`       |
 
 ---
 
@@ -475,6 +493,7 @@ flowchart LR
 ---
 
 ### Reference Links
+
 - Next.js docs: https://nextjs.org/docs
 - Prisma docs: https://www.prisma.io/docs
 - NextAuth v5 docs: https://authjs.dev
